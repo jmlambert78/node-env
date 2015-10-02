@@ -1,3 +1,4 @@
 applications:
 - name: node-env
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
   mem: 32M
