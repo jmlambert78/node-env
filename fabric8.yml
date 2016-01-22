@@ -1,0 +1,13 @@
+---
+pipeline: "workflows/node/CanaryReleaseStageAndApprovePromote/Jenkinsfile"
+buildName: "node-env"
+codeReview: false
+links:
+  Job: "http://jenkins.jml.10.10.163.6.xip.io/job/node-env"
+  Production: "http://fabric8.jml.10.10.163.6.xip.io/kubernetes/pods?namespace=node-env-production"
+  Room: "http://letschat.jml.10.10.163.6.xip.io/#!/room/569fdae5adf0021500b60a8c"
+  Staging: "http://fabric8.jml.10.10.163.6.xip.io/kubernetes/pods?namespace=node-env-staging"
+environments:
+  Staging: "node-env-staging"
+  Production: "node-env-production"
+useLocalFlow: true
