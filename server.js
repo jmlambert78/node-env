@@ -5,7 +5,7 @@ var http = require("http"),
     mustache = require("./lib/mustache"),
     keyprocessor = require("./lib/keyprocessor"),
     sysinfo = require('./lib/sysinfo'),
-    port = process.env.NODE_ENV_SERVICE_PORT || 8080;
+    port = process.env.PORT || 8080;
 
 http.createServer(function(request, response) {
 
