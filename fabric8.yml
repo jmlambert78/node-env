@@ -1,11 +1,12 @@
 ---
+chatRoom: "fabric8_default"
 buildName: "node-env"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
   Job: "http://172.30.189.134:80/job/node-env"
   Production: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-prod"
-  Room: "http://letschat.jml.oshift.paas.gemalto.com/#!/room/56ab1149b368e9150088e5ac"
+  Room: "http://letschat.jml.oshift.paas.gemalto.com/#!/room/56ab0ca7b368e9150088e5ab"
   Staging: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-staging"
   Testing: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-testing"
 environments:
