@@ -1,15 +1,16 @@
 ---
+pipeline: "workflows/node/CanaryReleaseStageAndApprovePromote/Jenkinsfile"
 chatRoom: "fabric8_default"
-buildName: "node-env3"
+buildName: "node-env4"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
-  Job: "http://172.30.189.134:80/job/node-env3"
-  Production: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-prod"
+  Job: "http://172.30.189.134:80/job/node-env4"
+  Production: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env4-production"
   Room: "http://letschat.jml.oshift.paas.gemalto.com/#!/room/56ab0ca7b368e9150088e5ab"
-  Staging: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-staging"
+  Staging: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env4-staging"
   Testing: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-testing"
 environments:
-  Testing: "node-env-testing"
-  Staging: "node-env-staging"
-  Production: "node-env-prod"
+  Staging: "node-env4-staging"
+  Production: "node-env4-production"
+useLocalFlow: true
