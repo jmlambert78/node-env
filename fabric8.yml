@@ -1,0 +1,14 @@
+---
+pipeline: "workflows/node/CanaryReleaseStageAndApprovePromote/Jenkinsfile"
+buildName: "node-env5"
+codeReview: false
+links:
+  Git: "https://github.com/jmlambert78/node-env"
+  Job: "http://172.30.189.134:80/job/node-env5"
+  Production: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env5-production"
+  Room: "http://letschat.jml.oshift.paas.gemalto.com/#!/room/56ab1149b368e9150088e5ac"
+  Staging: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env5-staging"
+environments:
+  Staging: "node-env5-staging"
+  Production: "node-env5-production"
+useLocalFlow: true
