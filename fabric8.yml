@@ -4,11 +4,11 @@ buildName: "node-env2"
 codeReview: false
 links:
   Job: "http://172.30.189.134:80/job/node-env2"
-  Production: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-production"
+  Production: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env2-production"
   Room: "http://letschat.jml.oshift.paas.gemalto.com/#!/room/56ab0ca7b368e9150088e5ab"
-  Staging: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env-staging"
+  Staging: "http://172.30.223.22:80/kubernetes/pods?namespace=node-env2-staging"
   Git: "https://github.com/jmlambert78/node-env"
 environments:
-  Staging: "node-env-staging"
-  Production: "node-env-production"
+  Staging: "node-env2-staging"
+  Production: "node-env2-production"
 useLocalFlow: true
