@@ -25,51 +25,45 @@ node ('kubernetes'){
 
   git 'https://github.com/jmlambert78/node-env'
 
-  kubernetes.pod('buildpod').withImage('fabric8/builder-openshift-client')
-      .withPrivileged(true)
-      .withHostPathMount('/var/run/docker.sock','/var/run/docker.sock')
-      .withEnvVar('DOCKER_CONFIG','/home/jenkins/.docker/')
-      .withSecret('jenkins-docker-cfg','/home/jenkins/.docker')
-      .withServiceAccount('jenkins')
-      .inside {
+  def newVersion = getNewVersion{}
+  def clusterImageName = "${env.FABRIC8_DOCKER_REGISTRY_SERVICE_HOST}:${env.FABRIC8_DOCKER_REGISTRY_SERVICE_PORT}/${organisation}/${env.JOB_NAME}:${newVersion}"
+  def clusterImageNameWithoutTag = "${env.FABRIC8_DOCKER_REGISTRY_SERVICE_HOST}:${env.FABRIC8_DOCKER_REGISTRY_SERVICE_PORT}/${organisation}/${env.JOB_NAME}"
+  def dockerhubImageName = "docker.io/${organisation}/${env.JOB_NAME}:${newVersion}"
 
-        def clusterImageName = "${env.FABRIC8_DOCKER_REGISTRY_SERVICE_HOST}:${env.FABRIC8_DOCKER_REGISTRY_SERVICE_PORT}/${organisation}/${env.JOB_NAME}:${versionPrefix}"
-        def dockerhubImageName = "docker.io/${organisation}/${env.JOB_NAME}:${versionPrefix}"
+  stage 'canary release'
 
-        stage 'canary release'
+    if (!fileExists ('Dockerfile')) {
+      writeFile file: 'Dockerfile', text: 'FROM node:5.3-onbuild'
+    }
 
-          if (!fileExists ('Dockerfile')) {
-            writeFile file: 'Dockerfile', text: 'FROM node:5.3-onbuild'
-          }
-          sh "docker build --rm -t ${clusterImageName} ."
-          //sh "docker push ${clusterImageName}"
+    kubernetes.image().withName(clusterImageName).build().fromPath(".")
+    kubernetes.image().withName(clusterImageNameWithoutTag).push().withTag(newVersion).toRegistry()
 
-          def rc = getKubernetesJson {
-            port = 8080
-            label = 'node'
-            icon = 'https://cdn.rawgit.com/fabric8io/fabric8/dc05040/website/src/images/logos/nodejs.svg'
-            version = versionPrefix
-            imageName = clusterImageName
-          }
+    // gitTag{
+    //   releaseVersion = newVersion
+    // }
 
-          sh 'echo "commit:" `git rev-parse HEAD` >> git.yml && echo "branch:" `git rev-parse --abbrev-ref HEAD` >> git.yml'
+    def rc = getKubernetesJson {
+      port = 8080
+      label = 'node'
+      icon = 'https://cdn.rawgit.com/fabric8io/fabric8/dc05040/website/src/images/logos/nodejs.svg'
+      version = newVersion
+      imageName = clusterImageName
+    }
 
-        stage 'Rolling upgrade Staging'
-          kubernetesApply(file: rc, environment: envStage)
+    //sh 'echo "commit:" `git rev-parse HEAD` >> git.yml && echo "branch:" `git rev-parse --abbrev-ref HEAD` >> git.yml'
 
-        approve{
-          room = null
-          version = canaryVersion
-          console = fabric8Console
-          environment = envStage
-        }
+  stage 'Rolling upgrade Staging'
+    kubernetesApply(file: rc, environment: envStage)
 
-        // stage 'promote'
-        //   sh "docker tag -f ${clusterImageName} ${dockerhubImageName}"
-        //   sh "docker push -f ${dockerhubImageName}"
-
-        stage 'Rolling upgrade Production'
-          kubernetesApply(file: rc, environment: envProd)
-
+  approve{
+    room = null
+    version = canaryVersion
+    console = fabric8Console
+    environment = envStage
   }
+
+  stage 'Rolling upgrade Production'
+    kubernetesApply(file: rc, environment: envProd)
+
 }
