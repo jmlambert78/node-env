@@ -12,7 +12,7 @@ node ('kubernetes'){
     }
 
     //def dockerRegistry = "${env.FABRIC8_DOCKER_REGISTRY_SERVICE_HOST}:${env.FABRIC8_DOCKER_REGISTRY_SERVICE_PORT}"
-    def dockerRegistry = 'docker-registry.ux.fabric8.io:80'
+    def dockerRegistry = '172.30.215.201:80'
     def newVersion = performCanaryRelease {
       registry = dockerRegistry
     }
