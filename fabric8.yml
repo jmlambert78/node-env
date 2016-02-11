@@ -3,9 +3,9 @@ buildName: "node-env2"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
-  Job: "http://172.30.66.25:80/job/node-env2"
-  Production: "http://172.30.246.45:80/kubernetes/pods?namespace=node-env-production"
-  Staging: "http://172.30.246.45:80/kubernetes/pods?namespace=node-env-staging"
+  Job: "http://172.30.5.86:80/job/node-env2"
+  Production: "http://172.30.219.202:80/kubernetes/pods?namespace=node-env-production"
+  Staging: "http://172.30.219.202:80/kubernetes/pods?namespace=node-env-staging"
 environments:
   Staging: "node-env-staging"
   Production: "node-env-production"
