@@ -29,12 +29,11 @@ http.createServer(function(request, response) {
                 sys: sysinfo.sysInfo()
             };
             for (var item in process.env) {
-			  if(item.substring(0, 3) === "npm")){}else{
+			  if((item.substring(0, 3) === "npm")==false)
                 v['env'].push({
                     'key': item,
                     'value': keyprocessor.procKey(item, process.env[item])
                 });
-			  }
             }
 
             fs.readFile(t, 'utf8', function(err, data) {
