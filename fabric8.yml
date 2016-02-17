@@ -3,10 +3,10 @@ buildName: "node-env"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
-  Job: "http://172.30.130.221:80/job/node-env"
-  Production: "http://172.30.157.37:80/kubernetes/pods?namespace=node-env-production"
-  Staging: "http://172.30.157.37:80/kubernetes/pods?namespace=node-env-staging"
-  Room: "http://letschat.jml.oshift.paas.gemalto.com/#!/room/56bccc2e75368b1500bfab19"
+  Job: "http://172.30.96.219:80/job/node-env"
+  Production: "http://172.30.226.236:80/kubernetes/pods?namespace=node-env-production"
+  Staging: "http://172.30.226.236:80/kubernetes/pods?namespace=node-env-staging"
+  Room: "http://letschat.master.oshift.paas.gemalto.com/#!/room/56c4b1dac94c7714006d2c4d"
 environments:
   Staging: "node-env-staging"
   Production: "node-env-production"
