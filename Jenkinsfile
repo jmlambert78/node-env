@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-def envStage = "${env.JOB_NAME}-staging"
+def envStage = "node-env-mongo-staging"
 
 node ('kubernetes'){
 
