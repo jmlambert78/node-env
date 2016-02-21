@@ -1,0 +1,11 @@
+---
+pipeline: "workflows/node/CanaryReleaseStage/Jenkinsfile"
+buildName: "node-env"
+codeReview: false
+links:
+  Git: "https://github.com/jmlambert78/node-env"
+  Job: "http://172.30.68.83:80/job/node-env"
+  Staging: "http://172.30.18.146:80/kubernetes/pods?namespace=node-env-staging"
+environments:
+  Staging: "node-env-staging"
+useLocalFlow: true
