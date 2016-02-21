@@ -1,5 +1,4 @@
 ---
-pipeline: "workflows/node/CanaryReleaseStage/Jenkinsfile"
 buildName: "node-env"
 codeReview: false
 links:
