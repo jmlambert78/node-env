@@ -1,10 +1,9 @@
 ---
-pipeline: "workflows/node/CanaryReleaseStage/Jenkinsfile"
 buildName: "nodeenv2"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
-  Job: "http://172.30.38.44:80/job/nodeenv2"
+  Job: "http://172.30.44.2:80/job/nodeenv2"
   Staging: "http://172.30.191.161:80/kubernetes/pods?namespace=nodeenv2-staging"
 environments:
   Staging: "nodeenv2-staging"
