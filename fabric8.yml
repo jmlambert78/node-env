@@ -3,8 +3,8 @@ buildName: "ansible-node-env"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
-  Job: "http://172.30.52.93:80/job/ansible-node-env"
-  Staging: "http://172.30.212.227:80/kubernetes/pods?namespace=ansible-node-env-staging"
+  Job: "http://172.30.176.129:80/job/ansible-node-env"
+  Staging: "http://172.30.76.229:80/kubernetes/pods?namespace=ansible-node-env-staging"
 environments:
   Staging: "ansible-node-env-staging"
 useLocalFlow: true
