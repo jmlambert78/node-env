@@ -1,10 +1,10 @@
 ---
-buildName: "ansible-node-env"
+buildName: "re-node-env"
 codeReview: false
 links:
   Git: "https://github.com/jmlambert78/node-env"
-  Job: "http://172.30.52.93:80/job/ansible-node-env"
-  Staging: "http://fabric8.ansible.oshift.paas.gemalto.com/kubernetes/pods?namespace=ansible-node-env-staging"
+  Job: "http://172.30.183.42:80/job/re-node-env"
+  Staging: "http://172.30.238.177:80/kubernetes/pods?namespace=ansible-node-env-staging"
 environments:
   Staging: "ansible-node-env-staging"
 useLocalFlow: true
