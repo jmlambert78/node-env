@@ -5,7 +5,5 @@ pipeline:
     commands:
       - npm install
       - npm test
-  +   group: build
       - npm run
-  +   group: build
       - curl http://localhost:8888
