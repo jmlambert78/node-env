@@ -6,3 +6,4 @@ pipeline:
       - npm install
       - npm test
       - npm run
+      - curl http://localhost:8888
