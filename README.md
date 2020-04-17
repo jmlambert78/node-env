@@ -62,7 +62,6 @@ kubectl apply -f pipeline-run.yaml
 * ```kubectl logs app-xxx```
 
 ### If you make a change in your code, remove the pr
-* ```tkn pr rm application-pipeline-run```
 * edit the image revision in the pipeline-run.yaml file as this one is static in this version. (to be improved)
 * ```kubectl apply -f pipeline-run.yaml``` : to trigger a new run
 
