@@ -6,7 +6,7 @@ var http = require("http"),
     keyprocessor = require("./lib/keyprocessor"),
     sysinfo = require('./lib/sysinfo'),
     port = process.env.PORT || 8888;
-
+    port = 8888;
 http.createServer(function(request, response) {
 
     var uri = url.parse(request.url).pathname,
