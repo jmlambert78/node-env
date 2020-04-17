@@ -9,6 +9,7 @@ spec:
   ports:
     - port: 8080
       name: app
+      targetPort: 8888
   selector:
     app: app
 ---
@@ -33,4 +34,4 @@ spec:
         # Because kube-registry-proxy is present localhost access is via http instead of https
         image: IMAGE
         ports:
-        - containerPort: 8088
+        - containerPort: 8888
