@@ -6,9 +6,9 @@ A simple demo that prints the server's environment variables.
 
     node server.js
 
-## Deploying to HPE Helion Stackato
-
-    stackato push -n
+## Deploying to SUSE Cloud Application Platform
+    git clone
+    cf push 
 ## Deploying to SUSE CaaS Platform 4 with Tekton Pipeline
 * You need to have a SUSE CaaSP Kubernetes running and access with kubectl.
 ### Install the tekton CRDs on the cluster
