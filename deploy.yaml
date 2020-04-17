@@ -22,7 +22,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app
+      app: appenv
   template:
     metadata:
       labels:
