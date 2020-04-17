@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    tekton.dev/docker-0: https://index.docker.io/v1/
+  name: dockerhub
+  namespace: default
+type: kubernetes.io/basic-auth
+data:
+  password: <yourpassword>
+  username: <yourusername>
