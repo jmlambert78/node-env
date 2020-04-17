@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: appenv
+  labels:
+    app: appenv
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      name: app
+  selector:
+    app: appenv
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: appenv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: appenv
+    spec:
+      containers:
+      - name: app
+        # Because kube-registry-proxy is present localhost access is via http instead of https
+        image: IMAGE
+        ports:
+        - containerPort: 8088
