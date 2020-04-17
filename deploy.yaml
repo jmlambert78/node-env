@@ -1,33 +1,32 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: appenv
+  name: app
   labels:
-    app: appenv
+    app: app
 spec:
   type: NodePort
   ports:
     - port: 8080
       name: app
-      targetPort: 8088
   selector:
-    app: appenv
+    app: app
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
   labels:
-    app: appenv
+    app: app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: appenv
+      app: app
   template:
     metadata:
       labels:
-        app: appenv
+        app: app
     spec:
       containers:
       - name: app
