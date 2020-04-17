@@ -9,6 +9,7 @@ spec:
   ports:
     - port: 8080
       name: app
+      targetPort: 8088
   selector:
     app: appenv
 ---
