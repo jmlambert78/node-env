@@ -78,7 +78,11 @@ kubectl delete -f task-build-src.yaml
 kubectl delete -f pipeline.yaml      
 kubectl delete -f pipeline-run.yaml  
 ```
-
+### to clean up all your tekton elements
+```bash
+tkn pr rm --all
+tkn tr rm --all
+```
 
 
 
