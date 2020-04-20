@@ -35,6 +35,8 @@ A simple demo that prints the server's environment variables.
   * Tekton pipeline definition, making use of the 2 tasks above
 * pipeline-run.yaml          
   * actual pipeline parameters
+* launch-pipeline.sh
+  * tkn script to launch the pipeline with online params (for example to easily change teh tag versions)
 
 ### Deployment of your tekton resources
 * on your CLI, apply the following commands
@@ -45,7 +47,10 @@ kubectl apply -f git-resource-nodeenv.yaml
 kubectl apply -f task-deploy.yaml
 kubectl apply -f task-build-src.yaml
 kubectl apply -f pipeline.yaml      
+# either apply the yaml or the tkn cli script
 kubectl apply -f pipeline-run.yaml  
+or
+./launch-pipeline.sh <tag>
 ```
 ### Check the running pipeline with tkn
 * install the tkn CLI if you need
@@ -62,9 +67,8 @@ kubectl apply -f pipeline-run.yaml
 * ```kubectl logs app-xxx```
 
 ### If you make a change in your code, remove the pr
-* edit the image revision in the pipeline-run.yaml file as this one is static in this version. (to be improved)
-* ```kubectl apply -f pipeline-run.yaml``` : to trigger a new run
-
+* Use another tag for the image revision in the pipeline-run
+  * ./launch-pipeline.sh <tag>
 ### to clean up all your project
 ```bash
 kubectl delete -f service-account.yaml  
