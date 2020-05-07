@@ -1,0 +1,55 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: pipeline-nodeenv-template
+spec:
+  params:
+  - name: pathToContext
+    description: Path to source dir
+    default: "."
+  - name: pathToYamlFile
+    description: path to the deploy yaml file
+    default: "deploy.yaml"
+  - name: imageUrl
+    description: docker image url
+    default: "jmlambert78/nodeenv"
+  - name: imageTag
+    description: Image tag
+    default: "0.0.6"
+  - name: gitrevision
+    description: gitrevision
+    default: "stackato-3.6"
+  - name: gitrepositoryurl
+    description: gitrepositoryurl
+    default: "https://github.com/jmlambert78/node-env"
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: nodeenv-pipeline-run-
+    spec:
+      pipelineRef:
+        name: application-pipeline
+      serviceAccountName: service-account-nodeenv
+      params:
+      - name: pathToContext
+        value: $(params.pathToContext)
+      - name: pathToYamlFile
+        value:  $(params.pathToYamlFile)
+      - name: imageUrl
+        value: $(params.imageUrl)
+      - name: imageTag
+        value: $(params.imageTag)
+      - name: gitrevision
+        value: $(params.gitrevision)
+      - name: gitrepositoryurl
+        value: $(params.gitrepositoryurl)
+      resources:
+      - name: git-source
+        resourceSpec:
+          type: git
+          params:
+            - name: revision
+              value: $(params.gitrevision)
+            - name: url
+              value: $(params.gitrepositoryurl)

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+  name: tekton-el-ingress
+  namespace: default
+spec:
+  rules:
+  - host: tekton-el-nodeenv.ingress.jmllab.com
+    http:
+      paths:
+      - backend:
+          serviceName: el-listener
+          servicePort: 8080
+        path: /
+

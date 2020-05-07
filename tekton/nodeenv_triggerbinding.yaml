@@ -1,0 +1,19 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: nodeenv-pipeline-binding
+spec:
+  params:
+  - name: pathToContext
+    value: $(body.source.path)
+  - name: pathToYamlFile
+    value: $(body.deploy.path)
+  - name: imageUrl
+    value: $(body.image.url)
+  - name: imageTag
+    value: $(body.image.tag)
+  - name: gitrevision
+    value: $(body.git.revision)
+  - name: gitrepositoryurl
+    value: $(body.git.url)
+

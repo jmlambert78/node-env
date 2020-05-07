@@ -1,0 +1,13 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener
+spec:
+  serviceAccountName: service-account-nodeenv-triggers
+  triggers:
+    - name: nodeenv-trigger
+      bindings:
+        - name: nodeenvpipeline-binding
+      template:
+        name: pipeline-nodeenv-template
+
