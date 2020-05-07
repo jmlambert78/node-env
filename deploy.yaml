@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app
+  name: nodeenv-app
   labels:
     app: app
 spec:
@@ -13,10 +13,28 @@ spec:
   selector:
     app: app
 ---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+  name: nodeenv-app-ingress
+  namespace: default
+spec:
+  rules:
+  - host: nodeenv.ingress.jmllab.com
+    http:
+      paths:
+      - backend:
+          serviceName: nodeenv-app
+          servicePort: 8080
+        path: /
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: nodeenv-app
   labels:
     app: app
 spec:
